@@ -1,3 +1,6 @@
+@import url('https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@200&family=Press+Start+2P&family=ZCOOL+XiaoWei&display=swap');
+
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
@@ -10,4 +13,106 @@ body {
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+.login{
+  width: 100vw;
+  height: 100vh;
+  background-color: #282828;
+}
+
+
+.img{
+  transition: opacity 2500ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+}
+
+.active {
+  opacity: 1;
+  max-width: 100%;
+}
+
+
+
+.title{
+  color: #d5d5d5;
+  margin-top: 6vh;
+  margin-right: 20px;
+  margin-left: 20px;
+  text-align: center;
+  font-family: 'Permanent Marker', cursive;
+  font-size: 2.2em;
+}
+.title-zh{
+  color: #9b9b9b;
+  margin: 20px;
+  text-align: center;
+  font-size: 2em;
+  font-weight: lighter;
+}
+.title-login{
+  color: #ffffff;
+  margin-top: 10vh;
+  margin-bottom: 10vh;
+  text-align: center;
+  font-family: 'Permanent Marker', cursive;
+  font-size: 4.2em;
+}
+.login-form{
+  font-weight:900;
+  margin: 24vh 5vh 5vh 5vh;
+  position: relative;
+}
+
+.arco-btn-primary.arco-btn-disabled {
+  font-weight:700 !important;
+  background-color: #add0ff !important;
+}
+.arco-btn-primary:not(.arco-btn-disabled){
+  font-weight:700 !important;
+  background-color: #5B9CFB !important;
+}
+.arco-btn-primary:not(.arco-btn-disabled):hover{
+  font-weight:700 !important;
+  background-color: #3e89ff !important;
+}
+.arco-btn-primary:not(.arco-btn-disabled):active{
+  font-weight:700 !important;
+  background-color: #146eff !important;
+}
+
+
+/* --------- */
+/*Scrollbar   */
+/* --------- */
+
+::-webkit-scrollbar {
+  width: 0px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #ffffff;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: rgb(255, 137, 198);
+  border-radius: 12px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: rgb(253, 85, 174);
+  border-radius: 12px;
+}
+
+
+.next{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center!important;
+  padding: 0px;
+  gap: 48px;
 }
