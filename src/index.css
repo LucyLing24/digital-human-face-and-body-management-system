@@ -116,3 +116,10 @@ code {
   padding: 0px;
   gap: 48px;
 }
+
+
+.arco-input-group-wrapper .arco-input-inner-wrapper {
+  border-radius: 24px !important;
+}
+
+

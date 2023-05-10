@@ -94,7 +94,7 @@ function Login() {
                                     },
                                 },
                             ]}>
-                                <Input placeholder='please enter email' style={{width:"70%"}}/>
+                                <Input placeholder='please enter email' style={{width:"70%",borderRadius:24}}/>
                             </FormItem>
                             <FormItem label='Password'  field='password' rules={[
                                 {
@@ -106,12 +106,12 @@ function Login() {
                                     },
                                 },
                             ]}>
-                                <Input.Password placeholder='please enter your password' style={{width:"70%"}}/>
+                                <Input.Password placeholder='please enter your password' style={{width:"70%",borderRadius:24}}/>
                             </FormItem>
                             <FormItem >
-                                <Button style={{margin: 24,width:"100%",fontWeight:900}} htmlType="submit"
+                                <Button shape="round" style={{margin: 24,width:"100%",fontWeight:900}} htmlType="submit"
                                         type='primary'>Login</Button>
-                                <Button style={{marginLeft: 24,marginRight:24,marginBottom:"5vh",width:"100%",fontWeight:900}}
+                                <Button shape="round" style={{marginLeft: 24,marginRight:24,marginBottom:"5vh",width:"100%",fontWeight:900}}
                                         onClick={()=>{Message.info("🎉Congratulations! Successfully sign up. Please log in. 🎉")}}
                                         >Sign Up</Button>
                             </FormItem>
