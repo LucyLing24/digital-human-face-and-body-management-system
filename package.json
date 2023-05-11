@@ -25,7 +25,16 @@
     "slick-carousel": "^1.8.1",
     "typescript": "^4.9.5",
     "video-react": "^0.16.0",
-    "web-vitals": "^2.1.4"
+    "web-vitals": "^2.1.4",
+    "body-parser": "^1.20.2",
+    "express": "^4.18.2",
+    "log4js": "^6.9.1",
+    "moment": "^2.29.4",
+    "nc": "^0.0.0",
+    "node-static": "~0.7.11",
+    "nodemon": "^2.0.15",
+    "socket.io": "^4.6.1",
+    "sqlite3": "^4.2.0"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -53,6 +62,7 @@
   },
   "devDependencies": {
     "@types/react-slick": "^0.23.10",
-    "@types/video-react": "^0.15.1"
+    "@types/video-react": "^0.15.1",
+    "webrtc-adapter": "^7.7.1"
   }
 }

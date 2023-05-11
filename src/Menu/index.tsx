@@ -79,7 +79,7 @@ function Menu() {
                         <span>  </span>
                         MENU
                         <div style={{fontWeight:100,fontSize:16,fontFamily:"initial"}}>
-                            📎 Tips: please choose a digital avatar. 🌟
+                            📎 Tips: please choose a digital avatar.
                         </div>
                     </div>
                     <Row gutter={12}>
@@ -91,7 +91,7 @@ function Menu() {
                             </Col>
                         ))}
                     </Row>
-                    <Button style={{margin: 24,width:"90%",fontWeight:900}} shape="round" className="next" onClick={onFinish}
+                    <Button className="title-login" style={{margin: 24,width:"90%",fontWeight:900}} shape="round"  onClick={onFinish}
                             type='primary'>Next</Button>
                 </div>
 

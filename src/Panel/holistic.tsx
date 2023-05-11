@@ -1,4 +1,4 @@
-import { createRef, useEffect } from 'react'
+import React, { createRef, useEffect } from 'react'
 // @ts-ignore
 import { Holistic } from '@mediapipe/holistic/holistic'
 import {
@@ -9,6 +9,7 @@ import {
 } from '@mediapipe/drawing_utils/drawing_utils'
 // @ts-ignore
 import { POSE_CONNECTIONS, POSE_LANDMARKS } from '@mediapipe/pose/pose'
+
 
 import {
     FACEMESH_TESSELATION,
@@ -25,8 +26,13 @@ import { HAND_CONNECTIONS } from '@mediapipe/hands/hands'
 
 // @ts-ignore
 import { Camera } from '@mediapipe/camera_utils/camera_utils'
+import Row from '@arco-design/web-react/es/Grid/row'
+import Col from '@arco-design/web-react/es/Grid/col'
+import p0 from '../Assets/0.gif'
+import DesktopCapture from './desktop'
 
 function MyHolistic() {
+
     const canvasElementRef:any = createRef()
     const videoElementRef:any = createRef()
     useEffect(() => {
@@ -38,9 +44,9 @@ function MyHolistic() {
         })
         holistic.setOptions({
             upperBodyOnly: true,
-            smoothLandmarks: false,
-            minDetectionConfidence: 0.5,
-            minTrackingConfidence: 0.5,
+            smoothLandmarks: true,
+            minDetectionConfidence: 0.1,
+            minTrackingConfidence: 0.1,
         })
 
         const camera = new Camera(videoElementRef.current, {
@@ -48,7 +54,7 @@ function MyHolistic() {
                 await holistic.send({ image: videoElementRef.current })
             },
             width: 1280,
-            height: 720,
+            height: 960,
         })
         holistic.onResults(onResults)
         camera.start()
@@ -65,6 +71,7 @@ function MyHolistic() {
         const canvasCtx = canvasElementRef?.current.getContext('2d')
         const canvasElement:any = canvasElementRef.current
 
+        console.log(results,canvasElementRef?.current,111)
         removeLandmarks(results)
 
         canvasCtx.save()
@@ -82,7 +89,7 @@ function MyHolistic() {
         canvasCtx.lineWidth = 1
         if (results.poseLandmarks) {
             if (results.rightHandLandmarks) {
-                canvasCtx.strokeStyle = '#00FF00'
+                canvasCtx.strokeStyle = '#ff89c6'
                 connect(canvasCtx, [
                     [
                         results.poseLandmarks[POSE_LANDMARKS.RIGHT_ELBOW],
@@ -91,7 +98,7 @@ function MyHolistic() {
                 ])
             }
             if (results.leftHandLandmarks) {
-                canvasCtx.strokeStyle = '#FF0000'
+                canvasCtx.strokeStyle = '#96c6ee'
                 connect(canvasCtx, [
                     [
                         results.poseLandmarks[POSE_LANDMARKS.LEFT_ELBOW],
@@ -103,34 +110,34 @@ function MyHolistic() {
 
 
         drawConnectors(canvasCtx, results.poseLandmarks, POSE_CONNECTIONS, {
-            color: '#00FF00',
+            color: '#ffffff',
             lineWidth: 1
         })
         drawLandmarks(canvasCtx, results.poseLandmarks, {
-            color: '#00FF00',
-            fillColor: '#FF0000',
+            color: '#b7de6a',
+            fillColor: '#b7de6a',
             lineWidth: 1
         })
 
         drawConnectors(canvasCtx, results.rightHandLandmarks, HAND_CONNECTIONS, {
-            color: '#00CC00',
+            color: '#ffffff',
             lineWidth: 1,
         })
         drawLandmarks(canvasCtx, results.rightHandLandmarks, {
-            color: '#00FF00',
-            fillColor: '#FF0000',
+            color: '#96c6ee',
+            fillColor: '#ff89c6',
             lineWidth: 0.5,
             radius: (data:any) => {
                 return lerp(data.from.z, -0.15, 0.1, 2, 1)
             },
         })
         drawConnectors(canvasCtx, results.leftHandLandmarks, HAND_CONNECTIONS, {
-            color: '#CC0000',
+            color: '#ffffff',
             lineWidth: 1,
         })
         drawLandmarks(canvasCtx, results.leftHandLandmarks, {
-            color: '#FF0000',
-            fillColor: '#00FF00',
+            color: '#96c6ee',
+            fillColor: '#b7ce7e',
             lineWidth:  0.5,
             radius: (data:any) => {
                 return lerp(data.from.z, -0.15, 0.1, 2, 1)
@@ -143,19 +150,19 @@ function MyHolistic() {
             lineWidth: 1,
         })
         drawConnectors(canvasCtx, results.faceLandmarks, FACEMESH_RIGHT_EYE, {
-            color: '#FF3030',
+            color: '#ff89c6',
             lineWidth: 2,
         })
         drawConnectors(canvasCtx, results.faceLandmarks, FACEMESH_RIGHT_EYEBROW, {
-            color: '#FF3030',
+            color: '#ffdbe2',
             lineWidth: 2,
         })
         drawConnectors(canvasCtx, results.faceLandmarks, FACEMESH_LEFT_EYE, {
-            color: '#30FF30',
+            color: '#96c6ee',
             lineWidth: 2,
         })
         drawConnectors(canvasCtx, results.faceLandmarks, FACEMESH_LEFT_EYEBROW, {
-            color: '#30FF30',
+            color: '#bfdef8',
             lineWidth: 2,
         })
         drawConnectors(canvasCtx, results.faceLandmarks, FACEMESH_FACE_OVAL, {
@@ -163,7 +170,7 @@ function MyHolistic() {
             lineWidth: 2,
         })
         drawConnectors(canvasCtx, results.faceLandmarks, FACEMESH_LIPS, {
-            color: '#E0E0E0',
+            color: '#ffffff',
             lineWidth: 2,
         })
 
@@ -221,30 +228,27 @@ function MyHolistic() {
     // @ts-ignore
     return (
         <div className="App">
-            <header className="App-header">
-                <video
-                    style={{
-                        position: 'relative',
-                        top: '0',
-                        left: '0',
-                        right: '0',
-                        bottom: '0',
-                        width: '320px',
-                        height: '170px',
-                    }}
-                    ref={videoElementRef}
-                ></video>
-                <canvas
-                    ref={canvasElementRef}
-                    style={{
-                        position: 'relative',
-                        left: '0',
-                        top: '0',
-                        width: '320px',
-                        height: '170px',
-                    }}
-                ></canvas>
-            </header>
+            <Row>
+                <Col span={12} >
+                    <video
+                        style={{width:"100%",height:"50vh"}}
+                        ref={videoElementRef}
+                    ></video>
+                </Col>
+                <Col span={12} >
+                    <canvas
+                        style={{width:"100%",height:"49vh",margin:5,marginLeft:10}}
+                        ref={canvasElementRef}
+                    ></canvas>
+                </Col>
+                <Col span={12} >
+                    <img src={p0} alt="example GIF" style={{width:"100%",height:"49vh",background:"black"}}/>
+                </Col>
+                <Col span={12} >
+                    <img src="https://raw.githubusercontent.com/google/mediapipe/master/mediapipe/modules/face_geometry/data/canonical_face_model_uv_visualization.png
+                    " alt="example GIF" style={{width:"100%",height:"49vh",background:"black",marginBottom:10,marginLeft:10}}/>
+                </Col>
+            </Row>
         </div>
     )
 }

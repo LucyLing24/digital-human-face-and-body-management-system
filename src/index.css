@@ -57,6 +57,13 @@ code {
   font-family: 'Permanent Marker', cursive;
   font-size: 4.2em;
 }
+.title-panel{
+  color: #ffffff;
+  margin-top: 3vh;
+  text-align: center;
+  font-family: 'Permanent Marker', cursive;
+  font-size: 4.2em;
+}
 .login-form{
   font-weight:900;
   margin: 24vh 5vh 5vh 5vh;
