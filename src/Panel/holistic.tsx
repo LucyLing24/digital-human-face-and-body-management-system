@@ -30,6 +30,7 @@ import Row from '@arco-design/web-react/es/Grid/row'
 import Col from '@arco-design/web-react/es/Grid/col'
 import p0 from '../Assets/0.gif'
 import DesktopCapture from './desktop'
+import Desktop from "./desktop";
 
 function MyHolistic() {
 
@@ -242,7 +243,7 @@ function MyHolistic() {
                     ></canvas>
                 </Col>
                 <Col span={12} >
-                    <img src={p0} alt="example GIF" style={{width:"100%",height:"49vh",background:"black"}}/>
+                    <Desktop />
                 </Col>
                 <Col span={12} >
                     <img src="https://raw.githubusercontent.com/google/mediapipe/master/mediapipe/modules/face_geometry/data/canonical_face_model_uv_visualization.png
