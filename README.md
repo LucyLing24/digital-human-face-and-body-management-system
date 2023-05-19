@@ -1,4 +1,6 @@
 # Getting Started with Create React App
+<img width="706" alt="WechatIMG121" src="https://github.com/LucyLing24/digital-human-face-and-body-management-system/assets/56916034/f75964cd-28df-4fa1-ae96-f0eecf068a3c">
+
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
